@@ -1,0 +1,22 @@
+﻿.main {
+    text-align: center;
+    border: dashed red;
+}
+
+
+#titulo-planos {
+    text-align: center;
+}
+
+
+planos {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.planos > div{
+    padding: 30px;
+    margin: 30px;
+    
+}
