@@ -9,9 +9,10 @@
 }
 
 
-planos {
+.planos {
     display: flex;
     flex-direction: row;
+    
 }
 
 
@@ -19,4 +20,9 @@ planos {
     padding: 30px;
     margin: 30px;
     
+}
+
+.planos > div > button {
+    background-color: #ff6a00;
+    border-radius: 5px;
 }
