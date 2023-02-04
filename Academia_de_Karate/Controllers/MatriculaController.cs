@@ -1,3 +1,4 @@
+using Academia_de_Karate.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia_de_Karate.Controllers {
@@ -11,6 +12,12 @@ namespace Academia_de_Karate.Controllers {
 
         public IActionResult Index(){
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(AlunoInputModel model){
+
+            return RedirectToAction("Index");
         }
     }
 }
