@@ -16,8 +16,9 @@ namespace Academia_de_Karate.Controllers {
 
         [HttpPost]
         public IActionResult Index(AlunoInputModel model){
-
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+                return RedirectToAction("Index");
+            return View(model);
         }
     }
 }
