@@ -9,6 +9,7 @@ namespace Academia_de_Karate.Entities
             Telefone = telefone;
         }
 
+        public int Id { get; set; }
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Telefone { get; private set; }

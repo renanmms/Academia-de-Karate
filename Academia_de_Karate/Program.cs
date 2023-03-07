@@ -1,7 +1,17 @@
+using Academia_de_Karate.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("AcademiaDeKarateCS");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AcademiaDeKarateDbContext>(
+    options => 
+    {
+        options.UseSqlServer(connectionString);
+    }
+);
 
 var app = builder.Build();
 
