@@ -15,5 +15,11 @@ namespace Academia_de_Karate.Persistence.Repository
             _dbContext.Alunos.Add(aluno);
             _dbContext.SaveChanges();
         }
+
+        public IEnumerable<Aluno> ObterAlunos()
+        {
+            var alunos = _dbContext.Alunos.ToList();
+            return alunos;
+        }
     }
 }
