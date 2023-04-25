@@ -27,10 +27,19 @@ namespace Academia_de_Karate.Controllers {
                 _alunoRepository.MatricularAluno(aluno);
                 return RedirectToAction("Index","Home");
             }
-
             return View(model);
         }
 
+        public IActionResult Alunos(){
+            try{
+                var alunos = _alunoRepository.ObterAlunos();
+                var alunosVM = alunos.Select(a => Aluno.ToEntity(a)).ToList();
+                return View(alunosVM);
+
+            } catch(Exception ex) {
+                throw ex;
+            }
+        }
 
         public IActionResult Teste(){
             return Json(new {name = "Renan", age = 23});
