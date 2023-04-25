@@ -4,12 +4,15 @@
 <main class="d-flex">
     <div>
         <h2>Seja Bem-Vindo!</h2>
-        <img class="w-25 h-25" src="~/images/karate_icon.png"></img>    
+        <img class="w-25 h-25" src="~/images/karate_icon.png"></img>
         <h1>Academia de Karatê</h1>
-        <button class="btn-lg btn-light">Matricule-se</button>
+        <a asp-controller="Matricula" asp-action="Index" style="text-decoration: none" class="btn-lg btn-light">Matricule-se</a>
 
         <h2 class="mt-lg-4">Siga-nos nas redes sociais</h2>
-        <img src="~/images/instagram_colored_icon.png"></img>
+
+        <a href="https://www.instagram.com">
+            <img src="~/images/instagram_colored_icon.png"></img>
+        </a>
         <img src="~/images/twitter_icon.png"></img>
         <img src="~/images/facebook_icon.png"></img>
     </div>
