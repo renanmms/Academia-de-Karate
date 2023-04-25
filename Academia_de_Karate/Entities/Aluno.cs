@@ -1,3 +1,5 @@
+using Academia_de_Karate.Models;
+
 namespace Academia_de_Karate.Entities
 {
     public class Aluno
@@ -13,5 +15,9 @@ namespace Academia_de_Karate.Entities
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Telefone { get; private set; }
+
+        public static AlunoViewModel ToEntity(Aluno aluno){
+            return new AlunoViewModel(aluno.Nome, aluno.Email);
+        }
     }
 }
