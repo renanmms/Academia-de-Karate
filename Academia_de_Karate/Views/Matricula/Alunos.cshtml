@@ -1,0 +1,20 @@
+@model IEnumerable<AlunoViewModel>
+
+<h1>Alunos Matriculados</h1>
+
+
+<table style="width:100%">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+  </tr>
+
+@foreach (var aluno in Model)
+{
+    <tr>
+        <td>@aluno.Nome</td>
+        <td>@aluno.Email</td>
+    </tr>
+}
+
+</table>
