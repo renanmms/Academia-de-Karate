@@ -23,6 +23,12 @@ namespace Academia_de_Karate.Controllers
             return View();
         }
 
+        [Route("admin")]
+        public IActionResult LoginAdm()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
