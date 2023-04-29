@@ -29,6 +29,16 @@ namespace Academia_de_Karate.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Login(LoginInputModel model)
+        {
+            if(ModelState.IsValid){
+                return RedirectToAction(nameof(Index), "Home");
+            }
+
+            return View("LoginAdm", model);
+        }
+
         public IActionResult Privacy()
         {
             return View();
