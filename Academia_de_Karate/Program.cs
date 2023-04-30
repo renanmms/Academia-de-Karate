@@ -1,5 +1,6 @@
 using Academia_de_Karate.Persistence;
 using Academia_de_Karate.Persistence.Repository;
+using Academia_de_Karate.Services;
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("AcademiaDeKara
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.TopRight; });
 
 builder.Services.AddDbContext<AcademiaDeKarateDbContext>(
