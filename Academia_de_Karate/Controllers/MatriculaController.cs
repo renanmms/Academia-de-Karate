@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Academia_de_Karate.Controllers {
     public class MatriculaController : Controller
     {
+        private readonly ILogger<MatriculaController> _logger;
         private readonly IAlunoRepository _alunoRepository;
         private readonly INotyfService _notfyService;
-        public MatriculaController(IAlunoRepository alunoRepository, INotyfService notyfService)
+        public MatriculaController(ILogger<MatriculaController> logger, IAlunoRepository alunoRepository, INotyfService notyfService)
         {
             _alunoRepository = alunoRepository;
             _notfyService = notyfService;
+            _logger = logger;
         }
 
         public IActionResult Index(){
@@ -37,7 +39,8 @@ namespace Academia_de_Karate.Controllers {
                 return View(alunosVM);
 
             } catch(Exception ex) {
-                throw ex;
+                _logger.LogInformation(ex.Message);
+                throw;
             }
         }
 
