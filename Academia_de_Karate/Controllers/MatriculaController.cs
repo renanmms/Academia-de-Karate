@@ -1,6 +1,7 @@
 using Academia_de_Karate.Entities;
 using Academia_de_Karate.Models;
 using Academia_de_Karate.Persistence.Repository;
+using Academia_de_Karate.Services;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,17 @@ namespace Academia_de_Karate.Controllers {
         private readonly ILogger<MatriculaController> _logger;
         private readonly IAlunoRepository _alunoRepository;
         private readonly INotyfService _notfyService;
-        public MatriculaController(ILogger<MatriculaController> logger, IAlunoRepository alunoRepository, INotyfService notyfService)
+        private readonly IEmailService _emailService;
+        
+        public MatriculaController(ILogger<MatriculaController> logger,
+                                   IAlunoRepository alunoRepository,
+                                   INotyfService notyfService,
+                                   IEmailService emailService)
         {
             _alunoRepository = alunoRepository;
             _notfyService = notyfService;
             _logger = logger;
+            _emailService = emailService;
         }
 
         public IActionResult Index(){
@@ -24,11 +31,16 @@ namespace Academia_de_Karate.Controllers {
         [HttpPost]
         public IActionResult Index(AlunoInputModel model){
             var aluno = new Aluno(model.Nome, model.Email, model.Telefone);
-            if(ModelState.IsValid){
+
+            if(ModelState.IsValid)
+            {
                 _notfyService.Success("Aluno matriculado com sucesso");
                 _alunoRepository.MatricularAluno(aluno);
+                _emailService.SendEmailAsync(model.Email, "Matrícula no Karatê", $"Seja bem-vindo a nossa academia {model.Nome}! Oss!");
+
                 return RedirectToAction("Index","Home");
             }
+
             return View(model);
         }
 
