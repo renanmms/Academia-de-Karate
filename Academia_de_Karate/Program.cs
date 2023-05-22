@@ -12,6 +12,8 @@ var connectionString = builder.Configuration.GetConnectionString("AcademiaDeKara
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 builder.Services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.TopRight; });
 
 builder.Services.AddDbContext<AcademiaDeKarateDbContext>(
