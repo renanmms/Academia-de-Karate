@@ -30,13 +30,13 @@ namespace Academia_de_Karate.Controllers {
 
         [HttpPost]
         public IActionResult Index(AlunoInputModel model){
-            var aluno = new Aluno(model.Nome, model.Email, model.Telefone);
+            var aluno = new Aluno(model?.Nome!, model?.Email!, model?.Telefone!);
 
             if(ModelState.IsValid)
             {
                 _notfyService.Success("Aluno matriculado com sucesso");
                 _alunoRepository.MatricularAluno(aluno);
-                _emailService.SendEmailAsync(model.Email, "Matrícula no Karatê", $"Seja bem-vindo a nossa academia {model.Nome}! Oss!");
+                _emailService.SendEmailAsync(model?.Email!, "Matrícula no Karatê", $"Seja bem-vindo a nossa academia {model?.Nome}! Oss!");
 
                 return RedirectToAction("Index","Home");
             }

@@ -10,7 +10,7 @@ namespace Academia_de_Karate.Persistence
         {
             
         }
-        public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Aluno>? Alunos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

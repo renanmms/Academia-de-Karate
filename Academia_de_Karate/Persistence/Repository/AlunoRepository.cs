@@ -12,14 +12,14 @@ namespace Academia_de_Karate.Persistence.Repository
 
         public void MatricularAluno(Aluno aluno)
         {
-            _dbContext.Alunos.Add(aluno);
-            _dbContext.SaveChanges();
+            _dbContext?.Alunos?.Add(aluno);
+            _dbContext?.SaveChanges();
         }
 
         public IEnumerable<Aluno> ObterAlunos()
         {
-            var alunos = _dbContext.Alunos.ToList();
-            return alunos;
+            var alunos = _dbContext?.Alunos?.ToList();
+            return alunos ?? new List<Aluno>();
         }
     }
 }
